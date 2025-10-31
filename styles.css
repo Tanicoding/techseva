@@ -1,5 +1,176 @@
-.alice-regular {
-  font-family: "Alice", serif;
-  font-weight: 400;
-  font-style: normal;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background 0.3s, color 0.3s;
 }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Light Theme */
+body.light-theme {
+  background: linear-gradient(135deg, #fef6f0, #a8dadc);
+  color: #333;
+}
+
+/* Dark Theme */
+body.dark-theme {
+  background: linear-gradient(135deg, #2b2b2b, #1d1d1d);
+  color: #fef6f0;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+#themeBtn {
+  background: #ffb6b9;
+  border: none;
+  color: #333;
+  padding: 0.6rem 1rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+body.dark-theme #themeBtn {
+  background: #f28482;
+  color: white;
+}
+
+/* Landing Content */
+.landing {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #457b9d;
+}
+.content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.content p {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 1rem;
+}
+.hint {
+  font-size: 1rem;
+  margin-top: 2rem;
+  opacity: 0.8;
+  animation: blink 1.5s infinite;
+}
+.hint span {
+  font-weight: 600;
+  color: #ff7f32;
+}
+
+/* Simple animation */
+@keyframes blink {
+  0% { opacity: 0.8; }
+  50% { opacity: 0.4; }
+  100% { opacity: 0.8; }
+}
+
+/* Login Page */
+.login-section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #fef6f0, #a8dadc);
+}
+
+body.dark-theme .login-section {
+  background: linear-gradient(135deg, #2b2b2b, #1d1d1d);
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 3rem 2.5rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  max-width: 400px;
+  width: 90%;
+  backdrop-filter: blur(8px);
+  transition: 0.3s;
+}
+
+body.dark-theme .login-card {
+  background: rgba(60, 60, 60, 0.9);
+  color: #fef6f0;
+}
+
+.login-card h1 {
+  color: #457b9d;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.login-card h2 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+body.dark-theme .login-card h2 {
+  color: #fef6f0;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: 1.5px solid #ccc;
+  font-size: 1rem;
+}
+
+.login-card input:focus {
+  border-color: #a8dadc;
+  outline: none;
+}
+
+.btn {
+  width: 100%;
+  background: #ffb6b9;
+  border: none;
+  color: #333;
+  font-weight: 600;
+  padding: 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #f28482;
+  color: #fff;
+}
+
+.hint {
+  margin-top: 1rem;
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+/* Reuse Theme Toggle */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
