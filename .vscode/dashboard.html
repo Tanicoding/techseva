@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriShakti Home</title>
+  <link rel="stylesheet" href="common.css" />
+  <link rel="stylesheet" href="combined.css" /> 
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <img src="NutriShakti_logo.jpg" alt="NutriShakti Logo" class="logo">
+      <h1>NutriShakti</h1>
+    </div>
+    <select id="language">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+    </select>
+  </header>
+
+  <nav class="navbar">
+    <a href="home.html" class="active">Home</a> 
+    <a href="#">Diet Plan</a>
+    <a href="#">Community</a>
+    <a href="#">Resources</a>
+    <a href="#">Coaches</a>
+    <a href="#">Profile</a>
+  </nav>
+
+  
+  <main class="unified-dashboard">
+    <h2>Welcome Back, John! 👋</h2>
+    
+    <div class="check-in-box">
+        <p>Log in daily to maintain your streak and earn rewards!</p>
+        <button id="daily-checkin-btn">Check In Today</button>
+    </div>
+
+    <div class="tip-box">
+        <h3 class="tip-title">Nutritional Tip of the Day 🥑</h3>
+        <p id="nutri-tip" class="tip-text"></p>
+    </div>
+
+    <h3>Account Overview</h3>
+    <div class="cards">
+      <div class="card">
+        <h3>Profile Overview</h3>
+        <p>John Doe | johndoe@email.com</p>
+      </div>
+
+      <div class="card">
+        <h3>Weight Progress</h3>
+        <p>Start: 85kg | Current: 77kg | Target: 70kg</p>
+        <div class="progress-bar"><div class="fill" style="width: 60%;"></div></div>
+      </div>
+
+      <div class="card">
+        <h3>Current Goals</h3>
+        <ul>
+          <li>🥗 Balanced Diet Plan</li>
+          <li>💪 Protein Intake: 120g/day</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="progress-container">
+        <h3>Detailed Daily Tracking</h3>
+        
+        <div class="progress-item">
+            <span class="label">Calories (1800 kcal)</span>
+            <div class="progress-bar-visual"><div class="progress-fill" style="width: 75%;"></div></div>
+            <span class="value">1350/1800 kcal</span>
+        </div>
+        <div class="progress-item">
+            <span class="label">Protein (120g)</span>
+            <div class="progress-bar-visual"><div class="progress-fill" style="width: 50%;"></div></div>
+            <span class="value">60/120 g</span>
+        </div>
+        <div class="progress-item">
+            <span class="label">Water (8 Glasses)</span>
+            <div class="progress-bar-visual"><div class="progress-fill" style="width: 80%;"></div></div>
+            <span class="value">6/8 Glasses</span>
+        </div>
+        <div class="progress-item">
+            <span class="label">Steps (8000)</span>
+            <div class="progress-bar-visual"><div class="progress-fill" style="width: 90%;"></div></div>
+            <span class="value">7200/8000 Steps</span>
+        </div>
+    </div>
+
+  </main>
+
+  
+  <footer>
+    © 2025 NutriShakti. All rights reserved. | Contact Us
+  </footer>
+
+  <script src="combined.js"></script> 
+</body>
+</html>
