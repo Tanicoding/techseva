@@ -5,20 +5,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const get = (id) => document.getElementById(id);
 
-  // ✅ Show only one step at a time & disable hidden step fields
+  // Show only one step at a time & disable hidden fields
   const showStep = (step) => {
     steps.forEach((s, i) => {
       const isVisible = i + 1 === step;
       s.style.display = isVisible ? "block" : "none";
 
-      // Disable inputs in hidden steps (fixes 'not focusable' bug)
+      // Disable inputs in hidden steps to fix "not focusable" bug
       const inputs = s.querySelectorAll("input, select, textarea, button");
       inputs.forEach((inp) => (inp.disabled = !isVisible));
     });
     currentStep = step;
   };
 
-  // ✅ Navigation
+  // Navigation
   get("next1").onclick = () => showStep(2);
   get("back1").onclick = () => showStep(1);
   get("next2").onclick = () => showStep(3);
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
   get("next4").onclick = () => showStep(5);
   get("back4").onclick = () => showStep(4);
 
-  // ✅ Budget live update
+  // Budget live update
   const budget = get("budget");
   if (budget) {
     budget.addEventListener("input", () => {
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ✅ When clicking “Next” on Step 5
+  // Step 5 → Step 6 Summary
   get("next5").addEventListener("click", () => {
     const goal = get("goal").value || "Not selected";
     const budgetVal = get("budget").value || "N/A";
@@ -54,20 +54,20 @@ document.addEventListener("DOMContentLoaded", () => {
     showStep(6);
   });
 
-  // ✅ Redirect to dashboard
+  // Submit → redirect
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const btn = document.getElementById("goDashboard");
     if (btn) btn.textContent = "Redirecting...";
-
     setTimeout(() => {
       window.location.href = "dashboard.html";
     }, 1000);
   });
 
-  // ✅ Initialize first step visible
+  // Initialize first step
   showStep(1);
 });
+
 
 
 
