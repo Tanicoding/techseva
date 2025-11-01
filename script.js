@@ -54,17 +54,20 @@ document.addEventListener("DOMContentLoaded", () => {
     showStep(6);
   });
 
-  // 🐛 CORRECTION APPLIED: This is the single, correct Submit → redirect logic
+  // Submit → redirect
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const btn = document.getElementById("goDashboard");
     if (btn) btn.textContent = "Redirecting...";
     setTimeout(() => {
-      // Redirects to the single unified home page as requested
-      window.location.href = "home.html"; 
+      window.location.href = "dashboard.html";
     }, 1000);
   });
 
   // Initialize first step
   showStep(1);
 });
+
+
+
+
