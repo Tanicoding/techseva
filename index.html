@@ -25,29 +25,84 @@
     </div>
 
     <div class="right-section">
-      <div class="login">
-        <h2>Login to Continue</h2>
-        <form>
-          <label>Email</label>
-          <input type="email" placeholder="Enter your email" required>
+      <div class="login" id="onboard">
+        <form id="onboard-form">
+          <div class="step" id="step-1">
+            <h2>Login to Continue</h2>
+            <label>Email</label>
+            <input type="email" placeholder="Enter your email" required>
 
-          <label>Password</label>
-          <input type="password" placeholder="Enter your password" required>
+            <label>Password</label>
+            <input type="password" placeholder="Enter your password" required>
+             <button type="button" id="next1">Next →</button>
+          </div>
+          
 
-          <label>Select your Goal</label>
-          <select required>
-            <option value="">  Choose a Goal  </option>
-            <option value="weight-loss">Weight Loss</option>
-            <option value="muscle-gain">Muscle Gain</option>
-            <option value="balanced-diet">Balanced Diet</option>
-          </select>
+          <div class="step" id="step-2" style="display:none;">
+            <h2>Personal Details</h2>
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter your full name" required>
 
-          <button type="submit">Get Started</button>
+            <label>Age</label>
+            <input type="number" placeholder="Enter your age" required>
+
+            <label>Gender</label>
+            <input type="text" placeholder="Enter your gender" required>
+            <div class="buttons">
+             <button type="button" id="back1">← Back</button>
+             <button type="button" id="next2">Next →</button>
+             </div>
+          </div>
+
+          <div class="step" id="step-3" style="display:none;">
+            <h2>Select Your Goal</h2>
+            <select id="goal" required>
+              <option value="">-- Choose a Goal --</option>
+              <option value="Weight Loss">Weight Loss</option>
+              <option value="Muscle Gain">Muscle Gain</option>
+              <option value="Balanced Diet">Balanced Diet</option>
+            </select>
+            <div class="buttons">
+            <button type="button" id="back2">← Back</button>
+            <button type="button" id="next3">Next →</button>
+            </div>
+        </div>
+
+        <div class="step" id="step-4" style="display:none;">
+          <h2>Your Preferences</h2>
+          <label><input type="checkbox" id="veg"> Vegetarian</label><br>
+          <label><input type="checkbox" id="nonveg"> Non-Vegetarian</label><br>
+          <label><input type="checkbox" id="allergies"> Allergic to Dairy</label>
+          <div class="buttons">
+          <button type="button" id="back3">← Back</button>
+          <button type="button" id="next4">Next →</button>
+         </div>
+        </div>
+
+        <div class="step" id="step-5" style="display:none;">
+          <h2>Set Your Monthly Budget</h2>
+          <input type="range" id="budget" min="500" max="10000" step="100" value="2500" />
+          <p>Your budget: ₹<span id="budgetVal">2500</span></p>
+          <div class="buttons">
+          <button type="button" id="back4">← Back</button>
+          <button type="button" id="next5">Next →</button>
+          </div>
+        </div>
+
+
+
+       <div class="step" id="step-6" style="display:none;">
+          <h2>Welcome to NutriShakti 🎉</h2>
+          <p id="summary"></p>
+          <button type="submit">Go to Dashboard</button>
+      </div>
+
         </form>
       </div>
     </div>
 
   </div>
+  <script src="script.js"></script>
 </body>
 </html>
 
