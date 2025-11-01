@@ -1,87 +1,73 @@
-// THEME TOGGLE (optional)
-const themeBtn = document.getElementById("themeBtn");
-if (themeBtn) {
-  themeBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark-theme");
-    document.body.classList.toggle("light-theme");
-
-    const theme = document.body.classList.contains("dark-theme") ? "dark" : "light";
-    localStorage.setItem("techsevaTheme", theme);
-  });
-}
-
-const savedTheme = localStorage.getItem("techsevaTheme");
-if (savedTheme === "dark") {
-  document.body.classList.remove("light-theme");
-  document.body.classList.add("dark-theme");
-}
-
-// MULTI-STEP LOGIC
 document.addEventListener("DOMContentLoaded", () => {
   const steps = document.querySelectorAll(".step");
+  const form = document.getElementById("onboard-form");
   let currentStep = 1;
 
-  function showStep(step) {
-    steps.forEach((s, i) => s.style.display = (i + 1 === step) ? "block" : "none");
+  const get = (id) => document.getElementById(id);
+
+  // ✅ Show only one step at a time & disable hidden step fields
+  const showStep = (step) => {
+    steps.forEach((s, i) => {
+      const isVisible = i + 1 === step;
+      s.style.display = isVisible ? "block" : "none";
+
+      // Disable inputs in hidden steps (fixes 'not focusable' bug)
+      const inputs = s.querySelectorAll("input, select, textarea, button");
+      inputs.forEach((inp) => (inp.disabled = !isVisible));
+    });
     currentStep = step;
+  };
+
+  // ✅ Navigation
+  get("next1").onclick = () => showStep(2);
+  get("back1").onclick = () => showStep(1);
+  get("next2").onclick = () => showStep(3);
+  get("back2").onclick = () => showStep(2);
+  get("next3").onclick = () => showStep(4);
+  get("back3").onclick = () => showStep(3);
+  get("next4").onclick = () => showStep(5);
+  get("back4").onclick = () => showStep(4);
+
+  // ✅ Budget live update
+  const budget = get("budget");
+  if (budget) {
+    budget.addEventListener("input", () => {
+      get("budgetVal").textContent = budget.value;
+    });
   }
 
-  // Navigation (fixed)
-  document.getElementById("next1").onclick = () => showStep(2);
-  document.getElementById("back1").onclick = () => showStep(1);
-  document.getElementById("next2").onclick = () => showStep(3);
-  document.getElementById("back2").onclick = () => showStep(2);
-  document.getElementById("next3").onclick = () => showStep(4);
-  document.getElementById("back3").onclick = () => showStep(3);
-  document.getElementById("next4").onclick = () => showStep(5); // ✅ this was wrong before
-  document.getElementById("back4").onclick = () => showStep(4);
-  document.getElementById("next5").onclick = () => showStep(6);
-
-  // Live budget update
-  const budget = document.getElementById("budget");
-  budget.addEventListener("input", () => {
-    document.getElementById("budgetVal").textContent = budget.value;
-  });
-
-  // Summary before dashboard
-  document.getElementById("next5").addEventListener("click", () => {
-    const goal = document.getElementById("goal").value;
-    const budgetVal = document.getElementById("budget").value;
+  // ✅ When clicking “Next” on Step 5
+  get("next5").addEventListener("click", () => {
+    const goal = get("goal").value || "Not selected";
+    const budgetVal = get("budget").value || "N/A";
     const prefs = [];
-    if (document.getElementById("veg").checked) prefs.push("Vegetarian");
-    if (document.getElementById("nonveg").checked) prefs.push("Non-Vegetarian");
-    if (document.getElementById("allergies").checked) prefs.push("Allergic to Dairy");
+    if (get("veg").checked) prefs.push("Vegetarian");
+    if (get("nonveg").checked) prefs.push("Non-Vegetarian");
+    if (get("allergies").checked) prefs.push("Allergic to Dairy");
 
-    document.getElementById("summary").innerHTML = `
+    get("summary").innerHTML = `
       <b>Goal:</b> ${goal}<br>
       <b>Budget:</b> ₹${budgetVal}<br>
       <b>Preferences:</b> ${prefs.join(", ") || "None"}
     `;
+
+    showStep(6);
   });
 
-  // Prevent reload and redirect
-  document.getElementById("onboard-form").addEventListener("submit", (e) => {
+  // ✅ Redirect to dashboard
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
-    alert("Redirecting to your personalized dashboard...");
-    window.location.href = "dashboard.html";
-  });
-});
+    const btn = document.getElementById("goDashboard");
+    if (btn) btn.textContent = "Redirecting...";
 
-
-
-  document.getElementById("signupForm").addEventListener("submit", function(e) {
-    e.preventDefault(); // stops page reload
-    // you can validate or save data here
-    window.location.href = "dashboard.html"; // redirect
-  });
-
- 
-  document.getElementById("finishBtn").addEventListener("click", () => {
-    // show loader or success message
     setTimeout(() => {
       window.location.href = "dashboard.html";
-    }, 1500); // redirect after 1.5 seconds
+    }, 1000);
   });
+
+  // ✅ Initialize first step visible
+  showStep(1);
+});
 
 
 
