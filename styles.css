@@ -1,176 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Alice&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: background 0.3s, color 0.3s;
+  font-family: 'Alice', garamond;
 }
-
 body {
-  font-family: 'Poppins', sans-serif;
+  background-color: #faf8fb; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
+}
+.container {
+  display: flex;
+  width: 85%;
+  max-width: 1100px;
+  height: 80vh;
+  background-color: #ffffff;
+  border-radius: 20px;
   overflow: hidden;
+  box-shadow: 0 6px 25px rgba(164, 128, 203, 0.15);
 }
-
-/* Light Theme */
-body.light-theme {
-  background: linear-gradient(135deg, #fef6f0, #a8dadc);
-  color: #333;
-}
-
-/* Dark Theme */
-body.dark-theme {
-  background: linear-gradient(135deg, #2b2b2b, #1d1d1d);
-  color: #fef6f0;
-}
-
-/* Theme Toggle Button */
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-}
-#themeBtn {
-  background: #ffb6b9;
-  border: none;
-  color: #333;
-  padding: 0.6rem 1rem;
-  border-radius: 50px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-body.dark-theme #themeBtn {
-  background: #f28482;
-  color: white;
-}
-
-/* Landing Content */
-.landing {
-  height: 100vh;
+.left-section {
+  width: 50%;
+  position: relative;
+  background-color: #fdf8ff;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
-  text-align: center;
-  padding: 2rem;
+  padding: 30px;
 }
-
-.content h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  color: #457b9d;
+.logo-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.25;
+  z-index: 0;
+  filter: hue-rotate(10deg) saturate(85%);
 }
-.content h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+.text-content {
+  position: relative;
+  z-index: 1;
+  color: #3d3d3d;
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 25px;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
 }
-.content p {
+.text-content h1 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #3c3c3c;
+}
+.text-content h1 span {
+  color: #d49ad6; 
+}
+.tagline {
   font-size: 1.1rem;
-  max-width: 600px;
-  margin: 0 auto 1rem;
+  color: #6a5f7a;
+  margin-top: 10px;
+  font-weight: bold;
 }
-.hint {
+.about {
   font-size: 1rem;
-  margin-top: 2rem;
-  opacity: 0.8;
-  animation: blink 1.5s infinite;
+  color: #514a56;
+  margin-top: 15px;
+  line-height: 1.5;
 }
-.hint span {
-  font-weight: 600;
-  color: #ff7f32;
-}
-
-/* Simple animation */
-@keyframes blink {
-  0% { opacity: 0.8; }
-  50% { opacity: 0.4; }
-  100% { opacity: 0.8; }
-}
-
-/* Login Page */
-.login-section {
-  height: 100vh;
+.right-section {
+  width: 50%;
+  background: linear-gradient(145deg, #ffe8f0, #f3e5f5, #e8f5e9);
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #fef6f0, #a8dadc);
+  padding: 40px;
 }
-
-body.dark-theme .login-section {
-  background: linear-gradient(135deg, #2b2b2b, #1d1d1d);
+.login {
+  background-color: rgba(255, 255, 255, 0.92);
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  width: 100%;
+  max-width: 350px;
 }
-
-.login-card {
-  background: rgba(255, 255, 255, 0.85);
-  padding: 3rem 2.5rem;
-  border-radius: 16px;
+.login h2 {
   text-align: center;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  max-width: 400px;
-  width: 90%;
-  backdrop-filter: blur(8px);
-  transition: 0.3s;
+  color: #4a4a4a;
+  margin-bottom: 20px;
+  font-weight: bold;
 }
-
-body.dark-theme .login-card {
-  background: rgba(60, 60, 60, 0.9);
-  color: #fef6f0;
+form {
+  display: flex;
+  flex-direction: column;
 }
-
-.login-card h1 {
-  color: #457b9d;
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+label {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #4a4a4a;
 }
-
-.login-card h2 {
-  color: #333;
-  margin-bottom: 1rem;
-}
-
-body.dark-theme .login-card h2 {
-  color: #fef6f0;
-}
-
-.login-card input {
-  width: 100%;
-  padding: 0.8rem;
-  margin-bottom: 1rem;
+input, select {
+  margin-top: 5px;
+  padding: 10px;
   border-radius: 8px;
-  border: 1.5px solid #ccc;
-  font-size: 1rem;
-}
-
-.login-card input:focus {
-  border-color: #a8dadc;
+  border: 1px solid #d7c7e3;
   outline: none;
+  transition: 0.2s;
+  font-size: 0.95rem;
+  background-color: #fefbff;
 }
-
-.btn {
-  width: 100%;
-  background: #ffb6b9;
+input:focus, select:focus {
+  border-color: #d49ad6;
+  box-shadow: 0 0 5px #e1bee7;
+}
+button {
+  margin-top: 20px;
+  padding: 12px;
+  background: linear-gradient(135deg, #d49ad6, #f5b6c6, #c5e1a5);
+  color: white;
   border: none;
-  color: #333;
-  font-weight: 600;
-  padding: 0.8rem;
   border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
 }
-
-.btn:hover {
-  background: #f28482;
-  color: #fff;
+button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
 }
-
-.hint {
-  margin-top: 1rem;
-  opacity: 0.8;
-  font-size: 0.9rem;
-}
-
-/* Reuse Theme Toggle */
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-}
-
