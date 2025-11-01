@@ -12,6 +12,7 @@
     <!-- LEFT SECTION -->
     <div class="left-section">
       <div class="logo-space">
+
         <img src="NutriShakti_logo.jpg" alt="logo" class="logo-img" />
       </div>
 
@@ -19,6 +20,10 @@
       <img src="https://cdn-icons-png.flaticon.com/512/415/415733.png" class="floating-item" alt="">
       <img src="https://cdn-icons-png.flaticon.com/512/765/765514.png" class="floating-item" alt="">
       <img src="https://cdn-icons-png.flaticon.com/512/590/590685.png" class="floating-item" alt="">
+
+    <img src="NutriShakti_logo.jpg" alt="logo" class="logo-img" />
+  </div>
+
 
       <div class="text-content">
         <h1>Welcome to <span>NutriShakti!</span></h1>
@@ -76,6 +81,28 @@
               <button type="button" id="back2">← Back</button>
               <button type="button" id="next3">Next →</button>
             </div>
+        </div>
+
+        <div class="step" id="step-4" style="display:none;">
+          <h2>Your Preferences</h2>
+          <div class="preferences-list">
+           <label><input type="checkbox" id="veg"> Vegetarian</label>
+           <label><input type="checkbox" id="nonveg"> Non-Vegetarian</label>
+           <label><input type="checkbox" id="allergies"> Allergic to Dairy</label>
+         </div>
+          <div class="buttons">
+          <button type="button" id="back3">← Back</button>
+          <button type="button" id="next4">Next →</button>
+         </div>
+        </div>
+
+        <div class="step" id="step-5" style="display:none;">
+          <h2>Set Your Monthly Budget</h2>
+          <input type="range" id="budget" min="500" max="10000" step="100" value="2500" />
+          <p>Your budget: ₹<span id="budgetVal">2500</span></p>
+          <div class="buttons">
+          <button type="button" id="back4">← Back</button>
+          <button type="button" id="next5">Next →</button>
           </div>
 
           <!-- STEP 4 -->
@@ -109,6 +136,11 @@
             <p id="summary"></p>
             <button type="submit">Go to Dashboard</button>
           </div>
+       <div class="step" id="step-6" style="display:none;">
+          <h2>Welcome to NutriShakti </h2>
+          <p id="summary"></p>
+          <button type="submit">Go to Dashboard</button>
+      </div>
 
         </form>
       </div>

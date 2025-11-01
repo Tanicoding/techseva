@@ -67,3 +67,21 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
+
+  document.getElementById("signupForm").addEventListener("submit", function(e) {
+    e.preventDefault(); // stops page reload
+    // you can validate or save data here
+    window.location.href = "dashboard.html"; // redirect
+  });
+
+ 
+  document.getElementById("finishBtn").addEventListener("click", () => {
+    // show loader or success message
+    setTimeout(() => {
+      window.location.href = "dashboard.html";
+    }, 1500); // redirect after 1.5 seconds
+  });
+
+
+
