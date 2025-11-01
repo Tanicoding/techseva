@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // added only 5 tips for demo
+    // added 5 tips only for demo, can change
     const tips = [
         "Remember to start your day with a glass of water to kickstart your metabolism.",
         "Include a handful of nuts or seeds daily for essential healthy fats and fiber.",
