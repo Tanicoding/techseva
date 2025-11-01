@@ -39,22 +39,27 @@ body {
   align-items: center;
   padding: 50px 30px 30px 30px;
   text-align: center;
+  overflow: hidden; /* keeps floating items clean */
 }
+
+/* 🔥 Logo perfectly in top-left */
 .logo-space {
   position: absolute;
-  top: 15px;
-  left: 15px;
+  top: 10px;       /* distance from top edge */
+  left: 15px;      /* distance from left edge */
   display: flex;
   align-items: center;
   gap: 10px;
-  z-index: 10;
+  z-index: 100;
 }
 
+/* Logo image */
 .logo-img {
-  width: 70px;
+  width: 65px;
   height: auto;
   object-fit: contain;
 }
+
 
 
 /* Floating pastel veggies/fruits */
