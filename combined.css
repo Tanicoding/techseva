@@ -1,0 +1,191 @@
+/* --- Original dashboard.css content (for .cards) --- */
+
+.dashboard {
+  padding: 40px 8%;
+  text-align: center;
+}
+/* IMPORTANT: We rename the main class for the unified content */
+.unified-dashboard {
+  padding: 40px 8%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.unified-dashboard h2 {
+  font-size: 1.8rem;
+  color: #2e185e;
+  margin-bottom: 40px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.unified-dashboard h3 {
+  font-size: 1.6rem;
+  color: #2e185e;
+  margin: 40px 0 20px 0;
+  font-weight: bold;
+  text-align: left;
+}
+
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.card {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(164, 128, 203, 0.1);
+  padding: 25px 30px;
+  width: 300px;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 25px rgba(164, 128, 203, 0.15);
+}
+
+.card h3 {
+  color: #4a0072;
+  margin-bottom: 10px;
+}
+
+.card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.card li {
+  padding: 4px 0;
+  font-size: 1rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #f0f0f0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progress-bar .fill {
+  height: 100%;
+  background: linear-gradient(135deg, #86efac, #c4b5fd);
+  border-radius: 6px;
+}
+
+/* --- New content styles --- */
+
+/* 1. DAILY CHECK-IN BOX STYLES (Pastel Orange) */
+.check-in-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffe6cc; /* Pastel Orange */
+    color: #4a0072;
+    padding: 18px 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(255, 165, 0, 0.1);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+#daily-checkin-btn {
+    background-color: #ff8c00; /* Orange color */
+    color: white; 
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#daily-checkin-btn:hover {
+    background-color: #cc7000;
+}
+
+/* 2. NUTRITIONAL TIP BOX STYLES (Pastel Green) */
+.tip-box {
+    background-color: #e6ffcc; /* Pastel Green */
+    padding: 20px 25px;
+    border-radius: 12px;
+    margin-bottom: 40px; 
+    box-shadow: 0 4px 12px rgba(0, 128, 0, 0.1);
+}
+
+.tip-title {
+    color: #008000; /* Nutritional Tip of the Day in Green */
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.tip-text {
+    color: #333333; 
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+/* 3. PROGRESS TRACKER STYLES (White Box) */
+.progress-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+}
+
+.progress-container h3 {
+    font-size: 1.6rem;
+    color: #2e185e;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.progress-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+    gap: 15px;
+}
+
+.progress-item .label {
+    width: 180px;
+    font-weight: 600;
+    color: #444;
+    font-size: 1rem;
+}
+
+.progress-item .value {
+    width: 100px;
+    text-align: right;
+    font-weight: 600;
+    color: #4a0072;
+    font-size: 0.95rem;
+}
+
+.progress-bar-visual {
+    flex-grow: 1;
+    height: 12px;
+    background: #f0f0f0;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #ddd;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #c5e1a5, #8bc34a);
+    border-radius: 6px 0 0 6px;
+    transition: width 0.5s ease;
+}
