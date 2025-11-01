@@ -9,24 +9,38 @@
 <body>
   <div class="container">
 
+    <!-- LEFT SECTION -->
     <div class="left-section">
       <div class="logo-space">
+
+        <img src="NutriShakti_logo.jpg" alt="logo" class="logo-img" />
+      </div>
+
+      <!-- Floating decorative veggies/fruits -->
+      <img src="https://cdn-icons-png.flaticon.com/512/415/415733.png" class="floating-item" alt="">
+      <img src="https://cdn-icons-png.flaticon.com/512/765/765514.png" class="floating-item" alt="">
+      <img src="https://cdn-icons-png.flaticon.com/512/590/590685.png" class="floating-item" alt="">
+
     <img src="NutriShakti_logo.jpg" alt="logo" class="logo-img" />
   </div>
+
 
       <div class="text-content">
         <h1>Welcome to <span>NutriShakti!</span></h1>
         <p class="tagline">Nourishing India, One Plate at a Time</p>
         <p class="about">
           Blending Tech with Tradition - at NutriShakti, we believe in local, seasonal and affordable health solutions.
-        Get personalised plans that suit your diet, lifestyle and goals!
+          Get personalised plans that suit your diet, lifestyle and goals!
         </p>
       </div>
     </div>
 
+    <!-- RIGHT SECTION -->
     <div class="right-section">
       <div class="login" id="onboard">
         <form id="onboard-form">
+
+          <!-- STEP 1 -->
           <div class="step" id="step-1">
             <h2>Login to Continue</h2>
             <label>Email</label>
@@ -34,10 +48,10 @@
 
             <label>Password</label>
             <input type="password" placeholder="Enter your password" required>
-             <button type="button" id="next1">Next →</button>
+            <button type="button" id="next1">Next →</button>
           </div>
-          
 
+          <!-- STEP 2 -->
           <div class="step" id="step-2" style="display:none;">
             <h2>Personal Details</h2>
             <label>Full Name</label>
@@ -49,11 +63,12 @@
             <label>Gender</label>
             <input type="text" placeholder="Enter your gender" required>
             <div class="buttons">
-             <button type="button" id="back1">← Back</button>
-             <button type="button" id="next2">Next →</button>
-             </div>
+              <button type="button" id="back1">← Back</button>
+              <button type="button" id="next2">Next →</button>
+            </div>
           </div>
 
+          <!-- STEP 3 -->
           <div class="step" id="step-3" style="display:none;">
             <h2>Select Your Goal</h2>
             <select id="goal" required>
@@ -63,8 +78,8 @@
               <option value="Balanced Diet">Balanced Diet</option>
             </select>
             <div class="buttons">
-            <button type="button" id="back2">← Back</button>
-            <button type="button" id="next3">Next →</button>
+              <button type="button" id="back2">← Back</button>
+              <button type="button" id="next3">Next →</button>
             </div>
         </div>
 
@@ -89,10 +104,38 @@
           <button type="button" id="back4">← Back</button>
           <button type="button" id="next5">Next →</button>
           </div>
-        </div>
 
+          <!-- STEP 4 -->
+          <div class="step" id="step-4" style="display:none;">
+            <h2>Your Preferences</h2>
+            <div class="preferences-list">
+              <label><input type="checkbox" id="veg"> Vegetarian</label>
+              <label><input type="checkbox" id="nonveg"> Non-Vegetarian</label>
+              <label><input type="checkbox" id="allergies"> Allergic to Dairy</label>
+            </div>
+            <div class="buttons">
+              <button type="button" id="back3">← Back</button>
+              <button type="button" id="next4">Next →</button>
+            </div>
+          </div>
 
+          <!-- STEP 5 -->
+          <div class="step" id="step-5" style="display:none;">
+            <h2>Set Your Monthly Budget</h2>
+            <input type="range" id="budget" min="500" max="10000" step="100" value="2500" />
+            <p>Your budget: ₹<span id="budgetVal">2500</span></p>
+            <div class="buttons">
+              <button type="button" id="back4">← Back</button>
+              <button type="button" id="next5">Next →</button>
+            </div>
+          </div>
 
+          <!-- STEP 6 -->
+          <div class="step" id="step-6" style="display:none;">
+            <h2>Welcome to NutriShakti</h2>
+            <p id="summary"></p>
+            <button type="submit">Go to Dashboard</button>
+          </div>
        <div class="step" id="step-6" style="display:none;">
           <h2>Welcome to NutriShakti </h2>
           <p id="summary"></p>
@@ -102,7 +145,6 @@
         </form>
       </div>
     </div>
-
   </div>
   <script src="script.js"></script>
 </body>
