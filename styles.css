@@ -40,23 +40,22 @@ body {
   padding: 50px 30px 30px 30px;
   text-align: center;
 }
-
 .logo-space {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 10;
-
   top: 15px;
-  left: 10px;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   z-index: 10;
 }
 
 .logo-img {
-  width: 80px;
+  width: 70px;
   height: auto;
   object-fit: contain;
 }
+
 
 /* Floating pastel veggies/fruits */
 .floating-item {
