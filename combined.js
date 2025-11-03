@@ -1,27 +1,82 @@
+/* ---------- NutriShakti Global (Header / Theme / Utils) ---------- */
+(function(){
+  const $ = (s) => document.querySelector(s);
+
+  /* === THEME TOGGLE === */
+  const themeBtn = $("#theme-toggle");
+  if (themeBtn) {
+    const savedTheme = localStorage.getItem("ns_theme");
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark");
+      themeBtn.textContent = "☀️";
+    }
+
+    themeBtn.addEventListener("click", () => {
+      const isDark = document.body.classList.toggle("dark");
+      themeBtn.textContent = isDark ? "☀️" : "🌙";
+      localStorage.setItem("ns_theme", isDark ? "dark" : "light");
+    });
+
+    // keyboard accessibility
+    themeBtn.addEventListener("keydown", (e)=> {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        themeBtn.click();
+      }
+    });
+  }
+
+  /* === SMALL TOAST (for reuse) === */
+  window.NSToast = function(msg){
+    const t = document.createElement("div");
+    t.className = "ns-toast";
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(()=> t.classList.add("show"), 20);
+    setTimeout(()=> {
+      t.classList.remove("show");
+      setTimeout(()=> t.remove(), 300);
+    }, 1600);
+  };
+
+  /* === SMALL HELPER === */
+  window.$ = $;
+  window.$$ = (s)=> Array.from(document.querySelectorAll(s));
+})();
+
+
+
+// combined.js — shared utilities + theme handling
 document.addEventListener("DOMContentLoaded", () => {
-    // added 5 tips only for demo, can change
-    const tips = [
-        "Remember to start your day with a glass of water to kickstart your metabolism.",
-        "Include a handful of nuts or seeds daily for essential healthy fats and fiber.",
-        "Try to eat a variety of colorful fruits and vegetables to get a wide range of vitamins.",
-        "Swap sugary drinks for fresh lemon water or unsweetened herbal tea.",
-        "Chew your food slowly to aid digestion and help you feel fuller faster."
-    ];
+  const body = document.body;
+  const toggleBtn = document.getElementById("theme-toggle");
 
-    const tipElement = document.getElementById("nutri-tip");
+  // === THEME TOGGLE ===
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    body.classList.add("dark");
+    if (toggleBtn) toggleBtn.textContent = "☀️";
+  }
 
-    if (tipElement) {
-        const randomIndex = Math.floor(Math.random() * tips.length);
-        tipElement.textContent = tips[randomIndex];
-    }
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      const isDark = body.classList.toggle("dark");
+      toggleBtn.textContent = isDark ? "☀️" : "🌙";
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+  }
 
-    const checkinBtn = document.getElementById("daily-checkin-btn");
-    if (checkinBtn) {
-        checkinBtn.addEventListener('click', () => {
-            alert("Daily Check-in Successful! Streak Maintained.");
-            checkinBtn.textContent = "Checked In! ✅";
-            checkinBtn.disabled = true;
-            checkinBtn.style.backgroundColor = '#4CAF50'; 
-        });
-    }
+  // === Small Utility Toast ===
+  window.showToast = function (msg) {
+    let toast = document.createElement("div");
+    toast.className = "ns-toast";
+    toast.textContent = msg;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.classList.add("show"), 20);
+    setTimeout(() => {
+      toast.classList.remove("show");
+      setTimeout(() => toast.remove(), 300);
+    }, 1800);
+  };
 });
+

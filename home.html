@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NutriShakti Dashboard | Home</title>
-  <link rel="stylesheet" href="common.css" />
-  <link rel="stylesheet" href="combined.css" /> 
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NutriShakti — Dashboard</title>
+  <link rel="stylesheet" href="home.css" />
+   <link rel="stylesheet" href="combined.css" />
 </head>
 <body>
-
+  <!-- HEADER -->
   <header>
     <div class="brand">
-      <img src="NutriShakti_logo.jpg" alt="NutriShakti Logo" class="logo">
+      <img src="NutriShakti_logo.jpg" alt="NutriShakti" class="logo" />
       <h1>NutriShakti</h1>
     </div>
-    <select id="language">
-      <option value="en">English</option>
-      <option value="hi">हिन्दी</option>
-    </select>
+
+    <div class="header-controls">
+      <select id="language" aria-label="Select language">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+      </select>
+      <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+    </div>
   </header>
 
+  <!-- NAV -->
   <nav class="navbar">
-    <a href="dashboard.html" class="active">Home</a> 
+    <a href="#" class="active">Home</a>
     <a href="#">Diet Plan</a>
     <a href="#">Community</a>
     <a href="#">Resources</a>
@@ -29,74 +34,79 @@
     <a href="#">Profile</a>
   </nav>
 
-  
-  <main class="unified-dashboard">
-    <h2>Welcome Back, John! 👋</h2>
-    
-    <div class="check-in-box">
-        <p>Log in daily to maintain your streak and earn rewards!</p>
-        <button id="daily-checkin-btn">Check In Today</button>
-    </div>
-
-    <div class="tip-box">
-        <h3 class="tip-title">Nutritional Tip of the Day 🥑</h3>
-        <p id="nutri-tip" class="tip-text"></p>
-    </div>
-
-    <h3>Account Overview</h3>
-    <div class="cards">
-      <div class="card">
-        <h3>Profile Overview</h3>
-        <p>John Doe | johndoe@email.com</p>
+  <main class="dashboard">
+    <!-- PROFILE -->
+    <section class="card profile-card">
+      <div class="profile-header">
+        <div class="profile-info">
+          <div class="avatar">JD</div>
+          <div>
+            <h2>John Doe</h2>
+            <p>johndoe@email.com</p>
+            <span class="tag orange">🔥 37 Day Streak</span>
+            <span class="tag green">-8kg Lost</span>
+          </div>
+        </div>
+        <button class="ghost-btn">⚙️ Edit Profile</button>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Weight Progress</h3>
-        <p>Start: 85kg | Current: 77kg | Target: 70kg</p>
-        <div class="progress-bar"><div class="fill" style="width: 60%;"></div></div>
+    <!-- WEIGHT -->
+    <section class="card weight-card">
+      <h3>Weight Progress</h3>
+      <p class="muted small">Started on Jan 15, 2024</p>
+      <div class="weight-stats">
+        <div class="weight-box">Start<br><b>85kg</b></div>
+        <div class="weight-box current">Current<br><b>77kg</b></div>
+        <div class="weight-box target">Target<br><b>70kg</b></div>
       </div>
-
-      <div class="card">
-        <h3>Current Goals</h3>
-        <ul>
-          <li>🥗 Balanced Diet Plan</li>
-          <li>💪 Protein Intake: 120g/day</li>
-        </ul>
+      <div class="progress-line">
+        <div class="fill" style="width: 55%;"></div>
       </div>
-    </div>
+      <small>Progress to Goal: 8kg / 15kg</small>
+    </section>
 
-    <div class="progress-container">
-        <h3>Detailed Daily Tracking</h3>
-        
-        <div class="progress-item">
-            <span class="label">Calories (1800 kcal)</span>
-            <div class="progress-bar-visual"><div class="progress-fill" style="width: 75%;"></div></div>
-            <span class="value">1350/1800 kcal</span>
-        </div>
-        <div class="progress-item">
-            <span class="label">Protein (120g)</span>
-            <div class="progress-bar-visual"><div class="progress-fill" style="width: 50%;"></div></div>
-            <span class="value">60/120 g</span>
-        </div>
-        <div class="progress-item">
-            <span class="label">Water (8 Glasses)</span>
-            <div class="progress-bar-visual"><div class="progress-fill" style="width: 80%;"></div></div>
-            <span class="value">6/8 Glasses</span>
-        </div>
-        <div class="progress-item">
-            <span class="label">Steps (8000)</span>
-            <div class="progress-bar-visual"><div class="progress-fill" style="width: 90%;"></div></div>
-            <span class="value">7200/8000 Steps</span>
-        </div>
-    </div>
+    <!-- GOALS -->
+    <section class="card goals-card">
+      <h3>🎯 Current Goals</h3>
+      <div class="goal-item active"><span>Daily Calorie Target</span><span>2000 kcal/day</span></div>
+      <div class="goal-item active"><span>Weekly Weight Loss</span><span>0.5 kg/week</span></div>
+      <div class="goal-item active"><span>Daily Steps</span><span>10,000 steps/day</span></div>
+      <button class="primary-btn">Update Goals</button>
+    </section>
 
+    <!-- ACHIEVEMENTS -->
+    <section class="card achievements-card">
+      <h3>🏆 Achievements</h3>
+      <p class="muted small">3 of 5 unlocked</p>
+      <div class="achievement-item">30 Day Streak <small>Earned on Feb 14, 2024</small></div>
+      <div class="achievement-item">5kg Lost <small>Earned on Mar 1, 2024</small></div>
+      <div class="achievement-item">Budget Master <small>Earned on Mar 15, 2024</small></div>
+      <div class="achievement-item locked">100 Workouts</div>
+      <div class="achievement-item locked">90 Day Warrior</div>
+    </section>
+
+    <!-- NOTIFICATIONS -->
+    <section class="card notifications-card">
+      <h3>🔔 Notification Settings</h3>
+      <p class="muted small">Manage your daily reminders and alerts</p>
+      <ul>
+        <li><b>Daily Check-in Reminder</b><br><small>Get reminded to log your meals</small></li>
+        <li><b>Water Intake Reminder</b><br><small>Hourly hydration reminders</small></li>
+        <li><b>Workout Reminder</b><br><small>Daily exercise notifications</small></li>
+        <li><b>Community Updates</b><br><small>Get notified about community posts</small></li>
+        <li><b>Weekly Progress Report</b><br><small>Summary of your weekly progress</small></li>
+      </ul>
+    </section>
   </main>
 
-  
-  <footer>
-    © 2025 NutriShakti. All rights reserved. | Contact Us
-  </footer>
+  <footer>© 2025 NutriShakti. All rights reserved. | Contact Us</footer>
 
-  <script src="combined.js"></script> 
+  <div id="nsToast" class="ns-toast">Saved</div>
+
+  <script src="home.js"></script>
 </body>
 </html>
+
+
+

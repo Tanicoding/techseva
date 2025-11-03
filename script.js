@@ -1,34 +1,59 @@
 document.addEventListener("DOMContentLoaded", () => {
   const steps = document.querySelectorAll(".step");
   const form = document.getElementById("onboard-form");
+  const themeBtn = document.getElementById("theme-toggle");
+  const get = (id) => document.getElementById(id);
   let currentStep = 1;
 
-  const get = (id) => document.getElementById(id);
+  /* === THEME TOGGLE === */
+  const savedTheme = localStorage.getItem("ns_theme");
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+    themeBtn.textContent = "☀️";
+  } else {
+    themeBtn.textContent = "🌙";
+  }
 
-  // Show only one step at a time & disable hidden fields
-  const showStep = (step) => {
+  themeBtn.addEventListener("click", () => {
+    const isDark = document.body.classList.toggle("dark");
+    themeBtn.textContent = isDark ? "☀️" : "🌙";
+    localStorage.setItem("ns_theme", isDark ? "dark" : "light");
+  });
+
+  /* === STEP HANDLING === */
+  function showStep(step) {
     steps.forEach((s, i) => {
-      const isVisible = i + 1 === step;
-      s.style.display = isVisible ? "block" : "none";
+      const visible = i + 1 === step;
+      s.style.display = visible ? "block" : "none";
 
-      // Disable inputs in hidden steps to fix "not focusable" bug
-      const inputs = s.querySelectorAll("input, select, textarea, button");
-      inputs.forEach((inp) => (inp.disabled = !isVisible));
+      // disable hidden inputs to prevent focus bugs
+      s.querySelectorAll("input, select, textarea, button").forEach((inp) => {
+        inp.disabled = !visible;
+      });
+
+      // small entrance animation
+      if (visible) {
+        s.style.opacity = 0;
+        s.style.transform = "translateY(12px)";
+        setTimeout(() => {
+          s.style.transition = "all 0.3s ease";
+          s.style.opacity = 1;
+          s.style.transform = "translateY(0)";
+        }, 20);
+      }
     });
     currentStep = step;
-  };
+  }
 
-  // Navigation
-  get("next1").onclick = () => showStep(2);
-  get("back1").onclick = () => showStep(1);
-  get("next2").onclick = () => showStep(3);
-  get("back2").onclick = () => showStep(2);
-  get("next3").onclick = () => showStep(4);
-  get("back3").onclick = () => showStep(3);
-  get("next4").onclick = () => showStep(5);
-  get("back4").onclick = () => showStep(4);
+  // navigation for all steps
+  for (let i = 1; i <= 5; i++) {
+    const next = get(`next${i}`);
+    const back = get(`back${i}`);
+    if (next) next.addEventListener("click", () => showStep(i + 1));
+    if (back) back.addEventListener("click", () => showStep(i - 1));
+  }
 
-  // Budget live update
+  /* === BUDGET SLIDER === */
   const budget = get("budget");
   if (budget) {
     budget.addEventListener("input", () => {
@@ -36,38 +61,44 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Step 5 → Step 6 Summary
-  get("next5").addEventListener("click", () => {
-    const goal = get("goal").value || "Not selected";
-    const budgetVal = get("budget").value || "N/A";
-    const prefs = [];
-    if (get("veg").checked) prefs.push("Vegetarian");
-    if (get("nonveg").checked) prefs.push("Non-Vegetarian");
-    if (get("allergies").checked) prefs.push("Allergic to Dairy");
+  /* === SUMMARY (STEP 5 → 6) === */
+  const next5 = get("next5");
+  if (next5) {
+    next5.addEventListener("click", () => {
+      const goal = get("goal").value || "Not selected";
+      const budgetVal = get("budget").value || "N/A";
+      const prefs = [];
+      if (get("veg").checked) prefs.push("Vegetarian");
+      if (get("nonveg").checked) prefs.push("Non-Vegetarian");
+      if (get("allergies").checked) prefs.push("Allergic to Dairy");
 
-    get("summary").innerHTML = `
-      <b>Goal:</b> ${goal}<br>
-      <b>Budget:</b> ₹${budgetVal}<br>
-      <b>Preferences:</b> ${prefs.join(", ") || "None"}
-    `;
+      get("summary").innerHTML = `
+        <b>Goal:</b> ${goal}<br>
+        <b>Budget:</b> ₹${budgetVal}<br>
+        <b>Preferences:</b> ${prefs.join(", ") || "None"}
+      `;
+      showStep(6);
+    });
+  }
 
-    showStep(6);
-  });
+  /* === REDIRECT TO DASHBOARD === */
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const btn = document.getElementById("goDashboard");
+      if (btn) {
+        btn.textContent = "Redirecting...";
+        btn.disabled = true;
+        btn.style.opacity = "0.7";
+        btn.style.cursor = "wait";
+      }
 
-  // Submit → redirect
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const btn = document.getElementById("goDashboard");
-    if (btn) btn.textContent = "Redirecting...";
-    setTimeout(() => {
-      window.location.href = "dashboard.html";
-    }, 1000);
-  });
+      setTimeout(() => {
+        window.location.href = "home.html"; // ✅ redirects properly
+      }, 1000);
+    });
+  }
 
-  // Initialize first step
+  // initialize first step
   showStep(1);
 });
-
-
-
-
